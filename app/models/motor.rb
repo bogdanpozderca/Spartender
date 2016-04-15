@@ -16,11 +16,14 @@ class Motor < ActiveRecord::Base
 
   def run(seconds)
 	seconds = seconds.to_i
+	start_time = Time.now
   	# if !@sensor.is_high
   	# 	prime()
   	# end
-  	set_pwm(100)
-  	sleep seconds
+#	while Time.now < start_time + seconds.seconds
+  	  set_pwm(100)
+	sleep
+#	end
   	stop_pwm()
 
   end
@@ -59,7 +62,7 @@ class Motor < ActiveRecord::Base
     end
 
     def delay(delay)
-    	@io.delay(delay)
+    	@io.delay(delay.to_i)
     end
 
     def stop_pwm()
