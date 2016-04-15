@@ -6,25 +6,26 @@ class PowerSupply < ActiveRecord::Base
     initialize_gpio()
   end
 
-	def start()
+  def start()
     initialize_gpio()
-	end
+  end
 
-	def stop()
+  def stop()
     shutdown_gpio()
-	end
+  end
 
-	private
+  private
     attr_writer :gpio, :io
 
-  	def initialize_gpio()
-  		@io = WiringPi::GPIO.new do |gpio|
-  	    gpio.pin_mode(:gpio, WiringPi::HIGH)
-  		end
-  	end
+    def initialize_gpio()
+      @io = WiringPi::GPIO.new do |gpio|
+      end
+      
+      @io.pin_mode(@gpio, WiringPi::HIGH)
+    end
 
     def shutdown_gpio()
-      @io.pin_mode(:gpio, WiringPi::LOW)
+      @io.pin_mode(@gpio, WiringPi::LOW)
       @io = nil
     end
 end
