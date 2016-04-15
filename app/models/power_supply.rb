@@ -1,7 +1,7 @@
 class PowerSupply < ActiveRecord::Base
   attr_reader :gpio, :io
 
-  def initialize
+  def initialize()
     @gpio = 6
     initialize_gpio()
   end
@@ -19,12 +19,12 @@ class PowerSupply < ActiveRecord::Base
 
   	def initialize_gpio()
   		@io = WiringPi::GPIO.new do |gpio|
-  	    gpio.pin_mode(@gpio, WiringPi::HIGH)
+  	    gpio.pin_mode(@gpio, 1)
   		end
   	end
 
     def shutdown_gpio()
-      @io.pin_mode(@gpio, WiringPi::LOW)
+      @io.pin_mode(@gpio, 0)
       @io = nil
     end
 end
