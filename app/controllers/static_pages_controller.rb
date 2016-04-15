@@ -6,6 +6,7 @@ class StaticPagesController < ApplicationController
 	end
 
 	def test
+		power_supply = PowerSupply.new
 		air_pump = Motor.new 25
 		air_pump.continuous_run
 
@@ -19,10 +20,10 @@ class StaticPagesController < ApplicationController
 				end
 			end
 		end
-		
+
 		sleep 7
 		air_pump.stop_continuous_run
-
+		power_supply.stop
 	end
 
 	private

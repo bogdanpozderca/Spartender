@@ -1,5 +1,5 @@
 class Motor < ActiveRecord::Base
-	attr_reader :type, :gpio, :io, :pwm_hz, :is_air_pump
+	attr_reader :gpio, :io, :pwm_hz, :is_air_pump
 
   def initialize(gpio)
     @gpio = gpio
@@ -26,7 +26,7 @@ class Motor < ActiveRecord::Base
   end
 
   def continuous_run
-  	if @gpio = 25
+  	if is_air_pump
   		set_pwm(100)
   	end
   end
@@ -37,7 +37,7 @@ class Motor < ActiveRecord::Base
 
   private
     
-    attr_writer :type, :gpio, :io, :pwm_hz
+    attr_writer :gpio, :io, :pwm_hz
 
   	def initialize_gpio()
   		@io = WiringPi::GPIO.new do |gpio|
