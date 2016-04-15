@@ -8,22 +8,22 @@ class StaticPagesController < ApplicationController
 
 	def test
 		power_supply = PowerSupply.new
-		#air_pump = Motor.new 25
-		#air_pump.continuous_run
+		air_pump = Motor.new 25
+		air_pump.continuous_run
 
-		#7.times.each do |x|
-		#	if !test_params["gpio#{x}"].blank?
-		#		motor = Motor.new test_params["gpio#{x}"]
-		#		if test_params["time#{x}"]
-		#			motor.run test_params["time#{x}"]
-		#		else
-		#			motor.run 2
-		#		end
-		#	end
-		#end
+		7.times.each do |x|
+			if !test_params["gpio#{x}"].blank?
+				motor = Motor.new test_params["gpio#{x}"]
+				if test_params["time#{x}"]
+					motor.run test_params["time#{x}"]
+				else
+					motor.run 2
+				end
+			end
+		end
 
 		sleep 7
-		#air_pump.stop_continuous_run
+		air_pump.stop_continuous_run
 		power_supply.stop
 	end
 

@@ -20,7 +20,7 @@ class Motor < ActiveRecord::Base
   	# end
 
   	set_pwm(100)
-  	sleep seconds
+  	sleep seconds.to_i
   	stop_pwm()
 
   end
@@ -41,12 +41,12 @@ class Motor < ActiveRecord::Base
 
   	def initialize_gpio()
   		@io = ::RaspPiIO.io
-  		@io.pin_mode(@gpio, WiringPi::HIGH)
-  	  @io.soft_pwm_create(@gpio, 0, @pwm_hz)
+  		@io.pin_mode(@gpio.to_i, WiringPi::HIGH)
+  	  @io.soft_pwm_create(@gpio.to_i, 0, @pwm_hz)
   	end
 
     def shutdown_gpio()
-      @io.pin_mode(@gpio, WiringPi::LOW)
+      @io.pin_mode(@gpio.to_i, WiringPi::LOW)
       @io = nil
     end
 
@@ -55,7 +55,7 @@ class Motor < ActiveRecord::Base
     		initialize_gpio()
     	end
 
-      @io.soft_pwm_write(@gpio, power)
+      @io.soft_pwm_write(@gpio.to_i, power)
     end
 
     def delay(delay)
@@ -63,7 +63,7 @@ class Motor < ActiveRecord::Base
     end
 
     def stop_pwm()
-      @io.soft_pwm_write(@gpio, WiringPi::LOW)
+      @io.soft_pwm_write(@gpio.to_i, WiringPi::LOW)
     end
 
     def stop()
