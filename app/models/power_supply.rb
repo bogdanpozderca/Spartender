@@ -19,12 +19,12 @@ class PowerSupply < ActiveRecord::Base
 
   	def initialize_gpio()
   		@io = WiringPi::GPIO.new do |gpio|
-  	    gpio.pin_mode(@gpio, 1)
+  	    gpio.pin_mode(:gpio, WiringPi::HIGH)
   		end
   	end
 
     def shutdown_gpio()
-      @io.pin_mode(@gpio, 0)
+      @io.pin_mode(:gpio, WiringPi::LOW)
       @io = nil
     end
 end
