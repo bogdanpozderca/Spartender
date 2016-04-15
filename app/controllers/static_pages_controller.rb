@@ -28,6 +28,20 @@ class StaticPagesController < ApplicationController
 		power_supply.stop
 	end
 
+	def stop
+		@gpios = [21,22,23,24,26,28,29]
+		@gpios.each do |x|
+			mot = Motor.new x.to_i
+			mot.stop
+		end
+
+		air_pump = Motor.new 25
+		air_pump.stop_continuous_run
+		power_supply = PowerSupply.new
+		power_supply.stop
+	end
+
+
 	private
 		def test_params
 	    params.permit(:gpio1, :gpio2, :gpio3, :gpio4, :gpio5, :gpio6, :gpio7,

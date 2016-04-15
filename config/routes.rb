@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'static_pages#index'
 
   post '/test' => 'static_pages#test'
+  post '/stop' => 'static_pages#stop'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

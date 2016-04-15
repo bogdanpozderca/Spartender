@@ -21,3 +21,8 @@
   <%= submit_tag "Start Motor(s)", :id => "motor_submit" %>
 
 <% end %>
+
+<%= form_tag("/stop", method: "post", id: "send_stop", :remote => true, :authenticity_token => true) do %>
+  <%= submit_tag "Emergency Stop Motor(s)", :id => "motor_stop_submit" %>
+
+<% end %>

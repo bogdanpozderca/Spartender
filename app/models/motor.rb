@@ -20,12 +20,16 @@ class Motor < ActiveRecord::Base
   	# if !@sensor.is_high
   	# 	prime()
   	# end
-#	while Time.now < start_time + seconds.seconds
+
+		while Time.now < start_time + seconds
   	  set_pwm(100)
-	sleep
-#	end
+		end
   	stop_pwm()
 
+  end
+
+  def stop()
+  	stop_pwm()
   end
 
   def continuous_run
@@ -35,7 +39,7 @@ class Motor < ActiveRecord::Base
   end
 
   def stop_continuous_run
-  	stop_pwm()
+  	complete_stop()
   end
 
   private
@@ -69,7 +73,7 @@ class Motor < ActiveRecord::Base
       @io.soft_pwm_write(@gpio.to_i, WiringPi::LOW)
     end
 
-    def stop()
+    def complete_stop()
       stop_pwm()
       shutdown_gpio()
     end
