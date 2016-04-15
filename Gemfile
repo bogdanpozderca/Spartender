@@ -24,7 +24,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # WiringPi Ruby Wrapper for GPIO Software Pulse Width Modulation
-# gem 'wiringpi'
+gem 'wiringpi'
+
+gem 'thin'
 
 # Parses CSS and makes compatibility not a problem
 gem "autoprefixer-rails"
