@@ -26,6 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # WiringPi Ruby Wrapper for GPIO Software Pulse Width Modulation
 # gem 'wiringpi'
 
+# Parses CSS and makes compatibility not a problem
+gem "autoprefixer-rails"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
