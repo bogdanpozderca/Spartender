@@ -13,7 +13,8 @@ class StaticPagesController < ApplicationController
 
 		7.times.each do |x|
 			if !test_params["gpio#{x}"].blank?
-				motor = Motor.new test_params["gpio#{x}"]
+				p test_params["gpio#{x}"].to_i
+				motor = Motor.new test_params["gpio#{x}"].to_i
 				if test_params["time#{x}"]
 					motor.run test_params["time#{x}"]
 				else
