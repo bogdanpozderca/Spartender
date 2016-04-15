@@ -16,16 +16,16 @@ class StaticPagesController < ApplicationController
 				p test_params["gpio#{x}"].to_i
 				motor = Motor.new test_params["gpio#{x}"].to_i
 				if test_params["time#{x}"]
-					motor.run test_params["time#{x}"]
+					Thread.new {motor.run test_params["time#{x}"] }
 				else
-					motor.run 2
+					Thread.new { motor.run 2 }
 				end
 			end
 		end
 
-		sleep 7
-		air_pump.stop_continuous_run
-		power_supply.stop
+		# sleep 7
+		# air_pump.stop_continuous_run
+		# power_supply.stop
 	end
 
 	def stop
