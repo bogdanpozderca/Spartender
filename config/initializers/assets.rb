@@ -3,6 +3,18 @@
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
 
+class WiringPiIo
+	attr_reader :io
+
+	def initialize
+	    @io = WiringPi::GPIO.new do |gpio|
+	    end
+	end
+
+end
+
+::RaspPiIO =WiringPiIo.new
+
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

@@ -18,9 +18,7 @@ class PowerSupply < ActiveRecord::Base
     attr_writer :gpio, :io
 
     def initialize_gpio()
-      @io = WiringPi::GPIO.new do |gpio|
-      end
-      
+      @io = ::RaspPiIO.io
       @io.pin_mode(@gpio, WiringPi::HIGH)
     end
 

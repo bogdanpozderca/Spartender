@@ -2,7 +2,8 @@ class StaticPagesController < ApplicationController
 	
 	def index
 		@gpios = [21,22,23,24,26,28,29]
-
+		mot = Motor.new 9
+		puts mot.io
 	end
 
 	def test

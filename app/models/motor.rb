@@ -40,10 +40,9 @@ class Motor < ActiveRecord::Base
     attr_writer :gpio, :io, :pwm_hz
 
   	def initialize_gpio()
-  		@io = WiringPi::GPIO.new do |gpio|
-  	    gpio.pin_mode(@gpio, WiringPi::HIGH)
-  	    gpio.soft_pwm_create(@gpio, 0, @pwm_hz)
-  		end
+  		@io = ::RaspPiIO.io
+  		@io.pin_mode(@gpio, WiringPi::HIGH)
+  	  @io.soft_pwm_create(@gpio, 0, @pwm_hz)
   	end
 
     def shutdown_gpio()
