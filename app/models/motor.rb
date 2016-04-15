@@ -15,15 +15,15 @@ class Motor < ActiveRecord::Base
   end
 
   def run(seconds)
-	seconds = seconds.to_i
-	start_time = Time.now
+	seconds = seconds.to_f
+	start_time = Time.now.to_f
   	# if !@sensor.is_high
   	# 	prime()
   	# end
 
-		while Time.now < start_time + seconds
-  	  set_pwm(100)
-		end
+	while Time.now.to_f < start_time + seconds
+		set_pwm(100)
+	end
   	stop_pwm()
 
   end

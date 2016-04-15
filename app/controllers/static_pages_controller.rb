@@ -15,7 +15,7 @@ class StaticPagesController < ApplicationController
 			if !test_params["gpio#{x}"].blank?
 				p test_params["gpio#{x}"].to_i
 				motor = Motor.new test_params["gpio#{x}"].to_i
-				if test_params["time#{x}"]
+				if !test_params["time#{x}"].blank?
 					Thread.new {motor.run test_params["time#{x}"] }
 				else
 					Thread.new { motor.run 2 }
