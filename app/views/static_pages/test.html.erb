@@ -1,1 +1,28 @@
-<div>test page</div>
+<h3>Run motor(s) with Air Pump</h3>
+<div>Default run time is 2 seconds</div>
+</br>
+
+<%= form_tag("/test", method: "post", id: "send_test", :remote => true, :authenticity_token => true) do %>
+	<% 7.times do |x|%>
+	<div>
+		<div><strong>Motor <%= x+1 %></strong></div>
+		<div>
+			<%= label_tag "gpio#{x+1}", "GPIO: " %>
+			<%= select_tag "gpio#{x+1}", options_for_select(@gpios), include_blank: true %>
+		</div>
+		<div>
+			<%= label_tag "time#{x+1}", "Run Time: " %>
+			<%= select_tag "time#{x+1}", options_for_select((0..30).to_a), include_blank: true %>
+		</div>
+		</br>
+	</div>
+	<% end %>
+
+  <%= submit_tag "Start Motor(s)", :id => "motor_submit" %>
+
+<% end %>
+
+<%= form_tag("/stop", method: "post", id: "send_stop", :remote => true, :authenticity_token => true) do %>
+  <%= submit_tag "Emergency Stop Motor(s)", :id => "motor_stop_submit" %>
+
+<% end %>
